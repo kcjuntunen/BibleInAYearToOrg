@@ -17,6 +17,7 @@ namespace BibleInAYearToOrg
 
             var outputFile = CreateOrgFile(filePath, startDate);
             Console.WriteLine(outputFile);
+            Console.ReadLine();
         }
 
         private static string CreateOrgFile(string filePath, DateTime startDate)
@@ -30,7 +31,7 @@ namespace BibleInAYearToOrg
                 using (var sw = new StreamWriter(fn))
                 {
                     var daysFromStart = 0;
-                    sw.WriteLine($"#+title: {o.info}");
+                    sw.WriteLine($"#+title: {o.info}, start date [{startDate.ToString("yyyy-MM-dd ddd")}]");
                     sw.WriteLine("#+columns: %Item %IntendedDate %Closed");
                     sw.WriteLine();
                     foreach (var datum in o.data2)
